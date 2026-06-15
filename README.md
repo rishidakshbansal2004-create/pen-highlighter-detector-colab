@@ -1,4 +1,4 @@
-# pen-highlighter-detector-colab 🖊️🖍️
+# Pen-highlighter-detector-colab 🖊️🖍️
 
 A real-time object detection project that detects and classifies **pens** and **highlighters** using YOLOv8, trained on Google Colab with a T4 GPU.
 
