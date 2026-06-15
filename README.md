@@ -14,7 +14,7 @@ Point your webcam at a pen or highlighter and it draws a bounding box around it 
 
 ## Results
 
-Trained for 100 epochs on a custom dataset of ~200+ images labeled using Roboflow.
+Trained for 100 epochs on a custom dataset of ~300+ images labeled using Roboflow.
 
 | Class | Precision | Recall | mAP50 |
 |---|---|---|---|
