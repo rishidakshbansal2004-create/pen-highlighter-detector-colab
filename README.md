@@ -1,8 +1,9 @@
+```markdown
 # Pen-highlighter-detector-colab 🖊️🖍️
 
-A real-time object detection project that detects and classifies **pens** and **highlighters** using YOLOv8, trained on Google Colab with a T4 GPU.
+A real-time object detection project that detects and classifies **pens** and **highlighters** using YOLOv8s, trained on Google Colab with a T4 GPU.
 
-This is my second computer vision project — an upgrade from my first pen-only detector, now with two classes and cloud GPU training.
+This is my second computer vision project — an upgrade from my first pen-only detector, now with two classes, a larger balanced dataset, and an upgraded model architecture.
 
 ---
 
@@ -14,13 +15,26 @@ Point your webcam at a pen or highlighter and it draws a bounding box around it 
 
 ## Results
 
-Trained for 100 epochs on a custom dataset of ~300+ images labeled using Roboflow.
+Trained for 100 epochs on a custom balanced dataset of 678 images (434 pen / 422 highlighter annotations) labeled using Roboflow.
 
 | Class | Precision | Recall | mAP50 |
 |---|---|---|---|
-| All | 0.874 | 0.914 | 0.904 |
-| Pen | 0.816 | 0.864 | 0.847 |
-| Highlighter | 0.932 | 0.965 | 0.962 |
+| All | 0.919 | 0.885 | 0.932 |
+| Pen | 0.881 | 0.794 | 0.899 |
+| Highlighter | 0.957 | 0.976 | 0.965 |
+
+**Inference speed:** 10.4ms (~96 FPS) on Colab T4 GPU
+
+---
+
+## Upgrade from v1
+
+| | v1 (YOLOv8n) | v2 (YOLOv8s) |
+|---|---|---|
+| Dataset | ~300 images | 678 images |
+| mAP50 (all) | 0.904 | 0.932 |
+| Highlighter mAP50 | 0.962 | 0.965 |
+| Inference | — | 10.4ms (~96 FPS) |
 
 ---
 
@@ -37,7 +51,14 @@ cd pen-highlighter-detector-colab
 pip install ultralytics opencv-python
 ```
 
-**3. Run webcam detection**
+**3. Set model path**
+
+Before running, open `webcam.py` and update the model path to where your `best.pt` is located:
+```python
+model = YOLO("path/to/best.pt")
+```
+
+**4. Run webcam detection**
 ```bash
 python webcam.py
 ```
@@ -55,7 +76,7 @@ If you want to retrain with your own dataset, get a Roboflow API key, update the
 
 ## Tech used
 
-- YOLOv8 (Ultralytics)
+- YOLOv8s (Ultralytics)
 - OpenCV
 - Roboflow
 - Google Colab (T4 GPU)
@@ -65,3 +86,6 @@ If you want to retrain with your own dataset, get a Roboflow API key, update the
 ## My other projects
 
 Check out my first pen detector (trained locally): [Object-Detector-Pen](https://github.com/rishidakshbansal2004-create/Object-Detector-Pen-)
+```
+
+Copy paste this directly into your README.md on GitHub. Done!
